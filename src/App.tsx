@@ -1,24 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Sidebar } from "./components/Sidebar";
+import { Header } from "./components/Header";
+import PaymentsPage from "./components/PaymentsPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-background flex min-h-screen">
+      <Sidebar />
+      <main className="w-full lg:w-[calc(100vw-14rem)]">
+        <Header />
+        <PaymentsPage />
+      </main>
     </div>
   );
 }
