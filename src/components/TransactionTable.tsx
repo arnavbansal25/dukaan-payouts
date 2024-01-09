@@ -1,5 +1,8 @@
 import React from "react";
 import searchIcon from "../assets/search.svg";
+import sortIcon from "../assets/sort.svg";
+import downloadIcon from "../assets/download.svg";
+import infoIcon from "../assets/info.svg";
 
 const transactionRow = {
   order_id: 281209,
@@ -14,12 +17,23 @@ export const TransactionTable = () => {
 
   return (
     <div className="bg-white shadow-cardShadow rounded-lg pt-3">
-      <div className="flex items-center bg-white rounded-lg pl-4 py-2 w-1/3 border-2 border-darkGrayBg ml-3 mb-3">
-        <img src={searchIcon} alt="search-icon" />
-        <input
-          placeholder="Search features, tutorials, etc."
-          className="bg-white border-none focus:outline-none pl-2 w-full"
-        />
+      <div className="flex justify-between ml-3 mb-3 mr-3">
+        <div className="flex items-center bg-white rounded-lg pl-4 py-2 w-1/3 border-2 border-darkGrayBg">
+          <img src={searchIcon} alt="search-icon" />
+          <input
+            placeholder="Search features, tutorials, etc."
+            className="bg-white border-none focus:outline-none pl-2 w-full"
+          />
+        </div>
+        <div className="flex gap-4">
+          <div className="text-black/70 px-3 py-1 border-2 rounded-md border-darkGrayBg flex items-center gap-2">
+            Sort
+            <img src={sortIcon} alt="sort-icon" />
+          </div>
+          <div className="text-black/70 px-3 py-1 border-2 rounded-md border-darkGrayBg flex items-center">
+            <img src={downloadIcon} alt="download-icon" />
+          </div>
+        </div>
       </div>
       <div className="p-6 pt-0 pb-4 lg:px-3 lg:pb-6 lg:pt-0 ">
         <div className="relative w-full overflow-auto">
@@ -29,13 +43,14 @@ export const TransactionTable = () => {
                 Order ID
               </th>
               <th className="text-center text-black/70 font-normal">
-                Order Date
+                Order Date ▼
               </th>
               <th className="text-right text-black/70 font-normal">
                 Order Amount
               </th>
-              <th className="text-right text-black/70 font-normal pr-3">
+              <th className="text-right text-black/70 font-normal pr-3 flex justify-end gap-1 h-12 items-center">
                 Transcation Fee
+                <img src={infoIcon} alt="info-icon" />
               </th>
             </tr>
             {transactions?.map((row) => (
@@ -54,7 +69,11 @@ export const TransactionTable = () => {
           </div>
           <div className="flex items-center gap-2">
             {numbers?.map((n, ind) => (
-              <span className={`${ind === 9 && "text-white bg-primary py-0.5 px-1.5 rounded-md"}`}>
+              <span
+                className={`${
+                  ind === 9 && "text-white bg-primary py-0.5 px-1.5 rounded-md"
+                }`}
+              >
                 {ind + 1}
               </span>
             ))}
